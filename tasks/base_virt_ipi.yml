@@ -1,6 +1,18 @@
 ---
 # vim: set ft=ansible:
 
+- name: Enable KSM for IPI deployments
+  ansible.builtin.systemd:
+    name: ksm
+    enabled: yes
+    state: started
+
+- name: Enable ksmtuned for IPI deployments
+  ansible.builtin.systemd:
+    name: ksmtuned
+    enabled: yes
+    state: started
+
 - name: restart libvirtd
   service: name=libvirtd state=restarted
 
