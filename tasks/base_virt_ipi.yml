@@ -146,7 +146,7 @@
     - "qemu-img create -f qcow2 /var/lib/libvirt/images/ocp4-bastion.qcow2 -b /var/lib/libvirt/images/centos8-kvm.qcow2 -F qcow2 200G"
     - "virt-resize --expand /dev/sda1 /var/lib/libvirt/images/centos8-kvm.qcow2 /var/lib/libvirt/images/ocp4-bastion.qcow2"
     - "virt-customize -a /var/lib/libvirt/images/ocp4-bastion.qcow2 --uninstall cloud-init"
-    - "virt-customize -a /var/lib/libvirt/images/ocp4-bastion.qcow2 --root-password password:redhat"
+    - "virt-customize -a /var/lib/libvirt/images/ocp4-bastion.qcow2 --root-password password:{{ ocp4_aio_root_password }}"
     - "virt-copy-in -a /var/lib/libvirt/images/ocp4-bastion.qcow2 /tmp/ifcfg-eth0 /etc/sysconfig/network-scripts"
     - "virt-customize -a /var/lib/libvirt/images/ocp4-bastion.qcow2 --run-command \"mkdir -p /root/.ssh/ && chmod -R 0700 /root/.ssh/\""
     - "virt-customize -a /var/lib/libvirt/images/ocp4-bastion.qcow2 --run-command \"restorecon -Rv /root/.ssh/\""
