@@ -103,7 +103,7 @@
     - "worker3"
     - "bastion"
   register: _download_files
-  async: 900
+  async: 3600
   poll: 0
   when: not build_lab|bool and (vm_name not in vm_list.stdout_lines) and cloud_provider == 'equinix_metal'
 
